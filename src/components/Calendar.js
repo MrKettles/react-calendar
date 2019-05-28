@@ -1,25 +1,24 @@
 import React from 'react';
 
 class Calendar extends React.Component {
-	constructor(props){
-		super(props);
-	}
-
-	renderCalendar(){
-		let theDate = new Date(this.props.date);
-		console.log(this.props.date);
-		console.log(theDate);
-		return (
-			<h3>CALENDAR TIME BABY</h3>
-		)
-	}
+	// constructor(props){
+	// 	super(props);
+	// }
 
 	render(){
 		return (
-			<div id='calendar'>
-			{this.props.date !== '' ? 
-				this.renderCalendar() :
-				<h3><i>No dates to display</i></h3>
+			<div id='calendarContainer'>
+			{this.props.calendar.length > 0 ?
+				<div id='calendar'> 
+					{this.props.calendar.map((day, i) => 
+						day.month ? 
+							<h3 key={i} className='month'>{day.month + ' ' + day.year}</h3> :
+							day.legend ?
+								<p key={i} className={'legend wd wd' + day.weekday}>{day.date}</p> : 
+								<p key={i} className={'wd wd' + day.weekday + ' ' + day.holiday}>{day.date || day.date === 0 ? day.date + 1 : ' '}</p>
+					)}
+				</div> :
+				<h3 id='noDates'><i>No dates to display</i></h3>
 			}
 			</div>
 		)

@@ -1,14 +1,11 @@
 import React from 'react';
 
 class DateForm extends React.Component {
-	constructor(props){
-		super(props);
-	}
-
 	render(){
 		return (
 			<div id='dateForm'>
 				<form>
+					<h1>Calendar Application</h1>
 					<label htmlFor='date'>Start Date: </label>
 					<input 
 						required
